@@ -9,6 +9,7 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
         int id
         string name
         string address
+        string phone_number
     }
 
     USER {
@@ -26,7 +27,10 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
         int id
         string name
         string section
+        string meeting_url
         int school_id
+        datetime starting_time
+        datetime ending_time
     }
 
     APPROVED_COURSES {
