@@ -29,9 +29,6 @@ class BaseController < ApplicationController
         else 
             return error_response(document.errors)
         end
-
-        
-
     end
 
     #GET -> Get record by id
