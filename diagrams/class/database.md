@@ -6,13 +6,19 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
 
     erDiagram
 
+    SCHOOL {
+        int id
+        string name
+        string address
+    }
+
     USER {
         int id
         string name
         string email
         string username
         string password_digest
-        int organization
+        int school_id
         datetime created_at
         datetime updated_at
     }
