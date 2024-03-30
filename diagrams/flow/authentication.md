@@ -1,6 +1,6 @@
 # Authentication diagram
 
-In this section we are going to review how the authentication process works
+In this section we are going to review how the authentication process works, all the logic is stored in the `AuthenticationController.rb` file.
 
 ## Register
 
