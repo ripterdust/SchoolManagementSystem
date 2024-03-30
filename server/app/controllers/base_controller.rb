@@ -20,8 +20,18 @@ class BaseController < ApplicationController
     def create
         model_properties = get_model_properties
         query = get_query(params, model_properties) 
+        query[:school_id] = @current_user[:school_id]
 
-        return render json: query
+        document = self.model.new(query)
+
+        if document.save
+            return base_response(document)
+        else 
+            return error_response(document.errors)
+        end
+
+        
+
     end
 
     #GET -> Get record by id
@@ -42,7 +52,8 @@ class BaseController < ApplicationController
     private 
     def base_response(data)
         render json: {
-            data: data
+            data: data,
+            error: nil
         }, status: :ok
     end
 
@@ -72,7 +83,7 @@ class BaseController < ApplicationController
         model_properties.each do |property|
             query[property] = request[property] if request.has_key?(property)
         end
-        
+
         query
     end
 end
