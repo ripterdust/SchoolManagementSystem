@@ -2,9 +2,9 @@
 
 This is an app build from scratch with ruby on rails for the backend and angular for the frontend.
 
-## Class Diagrams
+## Entity relationship Diagrams
 
-- [Class diagrams](./diagrams/class/database.md)
+- [Entity relationship Diagrams](./diagrams/class/database.md)
 
 ## LLD - Low Level Design
 
