@@ -8,4 +8,5 @@ Within this document, you'll find comprehensive resources including flowcharts a
 
 ### Backend flow charts
 
+- [Base Controller](./diagrams/flow/baseController.md)
 - [Authentication](./diagrams/flow/authentication.md)
