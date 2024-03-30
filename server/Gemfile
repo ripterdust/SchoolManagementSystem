@@ -14,6 +14,11 @@ gem "puma", ">= 5.0"
 # Json dependency
 gem "json"
 
+# Authentication
+gem "jwt"
+gem "bcrypt"
+
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
