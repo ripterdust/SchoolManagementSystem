@@ -37,17 +37,20 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
         int course_id
         int user_id
         double grade
+        int school_id
     }
 
     ASSIGNED_COURSES {
         int id
         int student_id
         int course_id
+        int school_id
     }
 
     TASKS {
         datetime expiration
         int course_id
+        int school_id
     }
 
     TASK_DELIVERING {
@@ -55,6 +58,7 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
         int course_id
         double score
         datetime delivering_date
+        int school_id
     }
 
 
