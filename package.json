@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "turbo dev"
+    "start": "concurrently -n \"CLIENT,SERVER\" \"cd client && ng serve\" \"cd server && rails s\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "turbo": "^1.13.0"
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
