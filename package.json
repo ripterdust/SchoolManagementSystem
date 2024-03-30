@@ -1,0 +1,12 @@
+{
+  "name": "school_management",
+  "version": "1.0.0",
+  "description": "This is an app build from scratch with ruby on rails for the backend and angular for the frontend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
