@@ -13,7 +13,8 @@ class BaseController < ApplicationController
 
     #GET -> fetch all records
     def index 
-        return base_response(@model.all)
+        query = self.model.where(school_id: @current_user[:school_id])
+        return base_response(query)
     end
 
     #POST -> Create a new record
@@ -33,7 +34,14 @@ class BaseController < ApplicationController
 
     #GET -> Get record by id
     def show 
-        record = @model.where(schoolId: @current_user[:school_id]).where(id: params[:id])
+        record = self.model.where(school_id: @current_user[:school_id]).where(id: params[:id])[0]
+
+        if !record
+            return error_response([{
+                message: "Record not found"
+            }])
+        end
+
         return base_response(record)
     end
 
@@ -43,7 +51,17 @@ class BaseController < ApplicationController
     end
     #DELETE -> Destroy record 
     def destroy
-        return base_response("Destroy")
+        record = self.model.where(school_id: @current_user[:school_id]).where(id: params[:id])[0]
+
+        if !record
+            return error_response([{
+                message: "Record not found"
+            }])
+        end
+
+        record.destroy
+        
+        return base_response(record)
     end
 
     private 
@@ -60,7 +78,7 @@ class BaseController < ApplicationController
             data: nil
         }, status: :internal_server_error
     end
-    
+
     def verifyNullishModel
         unless self.model
             render json: {
