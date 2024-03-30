@@ -1,4 +1,5 @@
 class AuthenticationController < ApplicationController
+    skip_before_action :authenticate_request, only: [:login]
 
     #POST /auth/login
     def login
@@ -13,15 +14,13 @@ class AuthenticationController < ApplicationController
             return 
         end
 
-        token = Jsonwebtoken.jwt_encode(user_id: @user.id)
+        token = jwt_encode(user_id: @user.id)
             
         return render json: { data: token }, status: :ok
     end
 
     #POST /auth/register
-
     def register
-
         token = "Hola"
         return render json: {data: token}, status: :ok
         
