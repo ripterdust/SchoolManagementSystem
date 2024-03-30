@@ -29,6 +29,12 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
         int school_id
     }
 
+    APPROVED_COURSES {
+        int course_id
+        int user_id
+        double grade
+    }
+
     ASSIGNED_COURSES {
         int id
         int student_id
@@ -47,10 +53,14 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
         datetime delivering_date
     }
 
-    SCHOOL  ||--o{ USER : has
+
     COURSES }o--o{ ASSIGNED_COURSES : includes
-    USER }o--o{ ASSIGNED_COURSES : "Enrolled in"
     SCHOOL ||--o{ COURSES : assignee
+    USER }o--o{ ASSIGNED_COURSES : "Enrolled in"
     COURSES ||--o{ TASKS : "Created tasks"
+    SCHOOL  ||--o{ USER : has
+    APPROVED_COURSES }o--o{ USER: "depends"
+    APPROVED_COURSES }o--o{ COURSES: "depends"
     TASK_DELIVERING }o--o{ TASKS: "depends"
+
 ```
