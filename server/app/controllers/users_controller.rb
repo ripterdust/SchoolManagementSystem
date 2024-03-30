@@ -34,6 +34,11 @@ class UsersController < ApplicationController
         render json: { data: {} }, status: :ok
     end
 
+    # GET /user -> Get user's data
+    def get_user_data
+        base_response(@current_user)
+    end
+
     private 
 
     def user_params 
@@ -44,5 +49,20 @@ class UsersController < ApplicationController
 
         puts params
         @user = User.find(params[:id])
+    end
+
+    private 
+    def base_response(data)
+        render json: {
+            data: data,
+            error: nil
+        }, status: :ok
+    end
+
+    def error_response(errors)
+        render json: {
+            errors: errors,
+            data: nil
+        }, status: :internal_server_error
     end
 end

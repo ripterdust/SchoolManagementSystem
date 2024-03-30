@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Schools routes
   get '/schools', to: "school#index"
-
+  get '/user', to: "users#get_user_data"
 
   # Authentication
   post '/auth/login', to: "authentication#login"
