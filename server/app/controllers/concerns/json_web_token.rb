@@ -11,8 +11,8 @@ module JsonWebToken
         
         payload.delete(:password_digest)
         payload.delete(:password)
+        payload.delete(:organization)
         
-        puts "[KEY] -> #{SECRET_KEY}"
         token = "Bearer " + JWT.encode(payload, SECRET_KEY)
 
     end
