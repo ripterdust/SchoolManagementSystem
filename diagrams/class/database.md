@@ -35,8 +35,22 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
         int course_id
     }
 
+    TASKS {
+        datetime expiration
+        int course_id
+    }
+
+    TASK_DELIVERING {
+        int user_id
+        int course_id
+        double score
+        datetime delivering_date
+    }
+
     SCHOOL  ||--o{ USER : has
     COURSES }o--o{ ASSIGNED_COURSES : includes
     USER }o--o{ ASSIGNED_COURSES : "Enrolled in"
     SCHOOL ||--o{ COURSES : assignee
+    COURSES ||--o{ TASKS : "Created tasks"
+    TASK_DELIVERING }o--o{ TASKS: "depends"
 ```
