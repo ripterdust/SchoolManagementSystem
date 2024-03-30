@@ -5,7 +5,8 @@ class BaseController < ApplicationController
 
     # Basse model
     @model = nil
-    
+    @isSchool = false
+
     #GET -> fetch all records
     def index 
         return base_response(@model.all)
@@ -17,6 +18,7 @@ class BaseController < ApplicationController
     end
     #GET -> Get record by id
     def show 
+        record = @model.where(schoolId: )
         return base_response("Show")
         
     end
