@@ -61,7 +61,7 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
     APPROVED_COURSES }o--o{ USER: "depends"
     APPROVED_COURSES }o--o{ COURSES: "depends"
     TASK_DELIVERING }o--o{ TASKS: "depends"
-    TASK_DELIVERING }o--o{ USER: "depends"
+    TASK_DELIVERING }o--o{ USER: ""
     USER }o--o{ ASSIGNED_COURSES : "Enrolled in"
 
 
