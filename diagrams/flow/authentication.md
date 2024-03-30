@@ -5,9 +5,6 @@ In this section we are going to review how the authentication process works, all
 ## Register
 
 ```mermaid
----
-    title: Register
----
 flowchart
     id1([START]) --> id2(User email, password and username gotten)
     id2 --> id3{Are username and email unique?}
@@ -23,9 +20,6 @@ flowchart
 ## Login
 
 ```mermaid
----
-    title: Login
----
 flowchart
     id1([START]) --> id2(Fetching user credentials)
     id2 --> id3(Get user by email)
