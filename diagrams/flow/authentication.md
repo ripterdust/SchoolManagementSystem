@@ -5,7 +5,6 @@ In this section we are going to review how the authentication process works
 ## Register
 
 ```mermaid
-
 ---
     title: Register
 ---
@@ -19,14 +18,11 @@ flowchart
     id7 --> id8(Creates user token)
     id6 --> id9
     id8 --> id9([END])
-
-
 ```
 
 ## Login
 
 ```mermaid
-
 ---
     title: Login
 ---
@@ -40,5 +36,4 @@ flowchart
     id4 --> id5(yes)
     id5 --> id8(Creates token)
     id8 --> id9([END])
-
 ```
