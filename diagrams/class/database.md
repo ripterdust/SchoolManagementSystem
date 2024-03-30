@@ -56,11 +56,13 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
 
     COURSES }o--o{ ASSIGNED_COURSES : includes
     SCHOOL ||--o{ COURSES : assignee
-    USER }o--o{ ASSIGNED_COURSES : "Enrolled in"
     COURSES ||--o{ TASKS : "Created tasks"
     SCHOOL  ||--o{ USER : has
     APPROVED_COURSES }o--o{ USER: "depends"
     APPROVED_COURSES }o--o{ COURSES: "depends"
     TASK_DELIVERING }o--o{ TASKS: "depends"
+    TASK_DELIVERING }o--o{ USER: "depends"
+    USER }o--o{ ASSIGNED_COURSES : "Enrolled in"
+
 
 ```
