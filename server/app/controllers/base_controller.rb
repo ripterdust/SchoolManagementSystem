@@ -1,5 +1,6 @@
 # Base controller, It handles the basic crud operations -> index, 
 class BaseController < ApplicationController
+    before_action :verifyNullishModel
 
     @model = nil
     
@@ -30,6 +31,17 @@ class BaseController < ApplicationController
         render json: {
             data: data
         }, status: :ok
+    end
+
+    def verifyNullishModel
+        if @model
+            return
+        end
+
+        return render json: {
+            data: nil,
+            errors: [{message: "No model specified"}]
+        }
     end
 
 end
