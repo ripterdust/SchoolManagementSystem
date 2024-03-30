@@ -43,7 +43,8 @@ class BaseController < ApplicationController
 
         return render json: {
             data: nil,
-            errors: [{message: "No model specified"}]
+            errors: [{message: "No model specified"}],
+            user: @current_user
         }
     end
 end
