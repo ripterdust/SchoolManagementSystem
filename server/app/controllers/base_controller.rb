@@ -13,13 +13,15 @@ class BaseController < ApplicationController
     end
 
     #POST -> Create a new record
-    def create 
+    def create
+        params[:school_id] = @current_user[:school_id]
         return base_response("Create")
     end
+
     #GET -> Get record by id
     def show 
-        record = @model.where(schoolId: )
-        return base_response("Show")
+        record = @model.where(schoolId: @current_user[:school_id]).where(id: params[:id])
+        return base_response(record)
         
     end
     #PUT/PATCH -> Update record by id
