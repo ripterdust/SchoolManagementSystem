@@ -1,3 +1,3 @@
 class CoursesController < BaseController
-    @Model
+    self.model = Course
 end

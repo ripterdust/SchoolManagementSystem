@@ -1,11 +1,15 @@
 # Base controller, It handles the basic crud operations -> index, 
 class BaseController < ApplicationController
+    # Attributes
+    class_attribute :model, default: false
+    
     # Middlewares
     before_action :verifyNullishModel
-
-    # Basse model
-    @model = nil
-    @isSchool = false
+    
+    def self.model(model = nil)
+        @model = model if model
+        @model
+    end
 
     #GET -> fetch all records
     def index 
@@ -14,8 +18,10 @@ class BaseController < ApplicationController
 
     #POST -> Create a new record
     def create
-        params[:school_id] = @current_user[:school_id]
-        return base_response("Create")
+        model_properties = get_model_properties
+        query = get_query(params, model_properties) 
+
+        return render json: query
     end
 
     #GET -> Get record by id
@@ -40,15 +46,33 @@ class BaseController < ApplicationController
         }, status: :ok
     end
 
+    def error_response(errors)
+        render json: {
+            errors: errors,
+            data: nil
+        }, status: :internal_server_error
+    end
     def verifyNullishModel
-        if @model
-            return
-        end
-
-        return render json: {
+        unless self.model
+            render json: {
             data: nil,
             errors: [{message: "No model specified"}],
             user: @current_user
-        }
+        }, status: :unprocessable_entity
+        end
+    end
+
+    def get_model_properties
+        self.model.column_names
+    end
+
+    def get_query(request, model_properties)
+        query = {}
+
+        model_properties.each do |property|
+            query[property] = request[property] if request.has_key?(property)
+        end
+        
+        query
     end
 end
