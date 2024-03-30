@@ -1,7 +1,9 @@
 # Base controller, It handles the basic crud operations -> index, 
 class BaseController < ApplicationController
+    # Middlewares
     before_action :verifyNullishModel
 
+    # Basse model
     @model = nil
     
     #GET -> fetch all records
@@ -9,19 +11,20 @@ class BaseController < ApplicationController
         return base_response(@model.all)
     end
 
+    #POST -> Create a new record
     def create 
         return base_response("Create")
     end
-
+    #GET -> Get record by id
     def show 
         return base_response("Show")
         
     end
-
+    #PUT/PATCH -> Update record by id
     def update
         return base_response("Update")
     end
-
+    #DELETE -> Destroy record 
     def destroy
         return base_response("Destroy")
     end
@@ -43,5 +46,4 @@ class BaseController < ApplicationController
             errors: [{message: "No model specified"}]
         }
     end
-
 end
