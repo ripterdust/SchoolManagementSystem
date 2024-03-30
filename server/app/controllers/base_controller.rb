@@ -35,8 +35,8 @@ class BaseController < ApplicationController
     def show 
         record = @model.where(schoolId: @current_user[:school_id]).where(id: params[:id])
         return base_response(record)
-        
     end
+
     #PUT/PATCH -> Update record by id
     def update
         return base_response("Update")
@@ -60,6 +60,7 @@ class BaseController < ApplicationController
             data: nil
         }, status: :internal_server_error
     end
+    
     def verifyNullishModel
         unless self.model
             render json: {
