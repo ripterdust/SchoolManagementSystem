@@ -21,7 +21,14 @@ class AuthenticationController < ApplicationController
 
     #POST /auth/register
     def register
-        token = "Hola"
+        user = User.new(email: params[:email], password: params[:password], username: params[:username])
+        
+        if !user.save
+            return render json: { data: nil, errors: user.errors }, stauts: :unauthorized
+        end
+
+        token = jwt_encode(user.attributes)
+
         return render json: {data: token}, status: :ok
         
     end

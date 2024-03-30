@@ -9,14 +9,16 @@ module JsonWebToken
     def jwt_encode(payload, exp = 7.days.from_now)
         payload[:exp] = exp.to_i
         
+        payload.delete(:password_digest)
+        payload.delete(:password)
+        
+        puts "[KEY] -> #{SECRET_KEY}"
         token = "Bearer " + JWT.encode(payload, SECRET_KEY)
 
     end
 
     def jwt_decode(token)
         decoded = JWT.decode(token, SECRET_KEY)[0]
-
-        puts "[decoded] -> #{decoded}"
 
         HashWithIndifferentAccess.new decoded
     end
