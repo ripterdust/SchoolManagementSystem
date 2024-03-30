@@ -36,4 +36,7 @@ The Entity-Relationship Diagram (ERD) for the "School Management" project provid
     }
 
     SCHOOL  ||--o{ USER : has
+    COURSES }o--o{ ASSIGNED_COURSES : includes
+    USER }o--o{ ASSIGNED_COURSES : "Enrolled in"
+    SCHOOL ||--o{ COURSES : assignee
 ```
