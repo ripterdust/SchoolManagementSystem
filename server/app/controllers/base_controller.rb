@@ -1,11 +1,11 @@
 # Base controller, It handles the basic crud operations -> index, 
 class BaseController < ApplicationController
 
-    model = nil
+    @model = nil
     
     #GET -> fetch all records
     def index 
-        return base_response("Index")
+        return base_response(@model.all)
     end
 
     def create 
