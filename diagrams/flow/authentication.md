@@ -28,6 +28,10 @@ flowchart
     id6 --> id7(Returns Unauthenticated message)
     id7 --> id9
     id4 --> id5(yes)
-    id5 --> id8(Creates token)
-    id8 --> id9([END])
+    id5 --> id8{Does database and received passwords matches?}
+    id8 --> id10(no)
+    id10 --> id7
+    id8 --> id11(yes)
+    id11 --> id9([END])
+
 ```
