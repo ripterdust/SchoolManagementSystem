@@ -10,6 +10,6 @@ class ApplicationController < ActionController::API
 
         decoded = jwt_decode(header)
 
-        @current_user =  User.find(decoded[:user_id]).as_json(except: [:password_digest])
+        @current_user = User.select(User.column_names - ['password_digest']).find(decoded[:user_id])
     end
 end

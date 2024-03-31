@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     # GET /user/:id
     def show 
-        render json: { data: @user }, status: :ok 
+        render json: { data: @user.as_json }, status: :ok 
     end
 
     #POST /users
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
             } , status: :unprocessable_entity
         end
 
-        render json: { data: @user }, status: :ok
+        render json: { data: @user.as_json }, status: :ok
     end
 
     #DELETE /users/:id

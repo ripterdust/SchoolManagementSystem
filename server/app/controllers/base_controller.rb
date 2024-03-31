@@ -23,8 +23,10 @@ class BaseController < ApplicationController
         query = get_query(params, model_properties) 
         query[:school_id] = @current_user[:school_id]
 
+        puts "[QUERY] -> #{@current_user[:school_id]}"
         document = self.model.new(query)
 
+        
         if document.save
             return base_response(document)
         else 
