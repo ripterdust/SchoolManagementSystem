@@ -66,21 +66,7 @@ class BaseController < ApplicationController
         return base_response(record)
     end
 
-    private 
-    def base_response(data)
-        render json: {
-            data: data,
-            error: nil
-        }, status: :ok
-    end
-
-    def error_response(errors)
-        render json: {
-            errors: errors,
-            data: nil
-        }, status: :internal_server_error
-    end
-
+    private
     def verifyNullishModel
         unless self.model
             render json: {
