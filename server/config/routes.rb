@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   get '/user', to: "users#get_user_data"
 
   # Courses
-  patch '/courses/meeting', to: "courses#change_meeting_url"
+  patch '/courses/meeting/:id', to: "courses#change_meeting_url"
 
   # Authentication
   post '/auth/login', to: "authentication#login"
-  post '/auth/register', to: "authentication#register"
+  post '/auth/register/', to: "authentication#register"
 end
