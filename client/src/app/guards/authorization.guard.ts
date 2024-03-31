@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
-export const notAuthorizationNeeded: CanActivateFn = (route, state) => {
+export const notAuthorizationNeeded: CanActivateFn = () => {
   const token = localStorage.getItem('token');
   const router = inject(Router);
 
@@ -13,7 +13,7 @@ export const notAuthorizationNeeded: CanActivateFn = (route, state) => {
   return true;
 };
 
-export const authorizationNeeded: CanActivateFn = (route, state) => {
+export const authorizationNeeded: CanActivateFn = () => {
   const token = localStorage.getItem('token');
   const router = inject(Router);
 
