@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { authorizationNeeded } from './guards/authorization.guard';
+import {
+  authorizationNeeded,
+  notAuthorizationNeeded,
+} from './guards/authorization.guard';
 import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
@@ -11,6 +14,7 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
+    canDeactivate: [notAuthorizationNeeded],
     children: [
       {
         path: 'login',
