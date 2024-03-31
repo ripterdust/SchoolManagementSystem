@@ -5,6 +5,7 @@ import {
   notAuthorizationNeeded,
 } from './guards/authorization.guard';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthSkeletonComponent } from './skeletons/auth-skeleton/auth-skeleton.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
   {
     path: 'auth',
     canDeactivate: [notAuthorizationNeeded],
+    component: AuthSkeletonComponent,
     children: [
       {
         path: 'login',
